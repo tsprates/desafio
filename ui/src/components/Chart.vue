@@ -20,7 +20,6 @@ const { title, data } = defineProps({
 const labels = data.map((item) => item.label)
 const values = data.map((item) => item.value)
 
-
 const chart = ref(null); 
 
 onMounted(() => {
@@ -51,9 +50,10 @@ watch(data, () => {
     if (chart.value) {
         const labels = data.value.map(item => item.label);
         const values = data.value.map(item => item.value);
+        
         chart.value.data.labels = labels;
         chart.value.data.datasets[0].data = values;
-        chart.value.data.datasets[0].label = title.value;
+        chart.value.data.datasets[0].label = title;
         chart.value.update();
     }
 }, {immediate: true });
