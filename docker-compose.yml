@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: api
+    build:
+      context: api/
+    volumes:
+      - "./api:/api"
+    ports:
+      - "8000:8000"
+    networks:
+      - desafio-network
+
+  ui:
+    container_name: ui
+    build:
+      context: ui/
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+    networks:
+      - desafio-network
+
+networks:
+  desafio-network:
+    driver: bridge

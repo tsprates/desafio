@@ -21,3 +21,9 @@ npm run dev
 ```
 
 > Por padrão, a __UI__ será executada na porta __*5173*__.
+
+## Docker (*Opcional*)
+
+```bash
+docker-compose up -d
+```
