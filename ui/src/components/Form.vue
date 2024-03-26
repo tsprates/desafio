@@ -32,14 +32,14 @@ const makeRequest = (endpoint) => {
 
 const changeChart = (event) => makeRequest(event.target.value);
 
-const handleSubmit = (event) => {
+const handleSubmit = () => {
   const baseUrl = import.meta.env.VITE_BASE_API;
   const data = new FormData();
-  
+
   data.append('file', file.value);
-  
+
   loading.value = true;
-  
+
   axios.post(`${baseUrl}/upload`, data, { headers: { 'Content-Type': `multipart/form-data` } })
     .then(() => makeRequest(route.value))
     .catch(error => console.error(error))
@@ -58,7 +58,7 @@ const handleSubmit = (event) => {
         </p>
         <p>
           <button type="submit" :disabled="!file"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 disabled:bg-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 inline-flex items-center">
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 disabled:bg-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 inline-flex items-center">
             <svg aria-hidden="true" role="status" v-if="loading"
               class="inline w-4 h-4 mx-4 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101"
               fill="none" xmlns="http://www.w3.org/2000/svg">
